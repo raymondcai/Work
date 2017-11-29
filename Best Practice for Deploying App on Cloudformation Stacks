@@ -1,0 +1,86 @@
+With AWS CloudFormation, you can provision the full breadth of AWS resources including Amazon EC2 instances. You provision the EC2 instances to run applications that drive your business. Here are some best practices for deploying and updating those applications on EC2 instances provisioned inside CloudFormation stacks:
+
+Use AWS::CloudFormation::Init
+Use IAM roles to securely download software and data
+Use Amazon CloudWatch logs for debugging
+Use cfn-hup for updates
+Use custom AMIs to minimize application boot times
+
+
+Best Practice 1: Use AWS::CloudFormation::Init
+
+When you include an EC2 instance in a CloudFormation template, use the AWS::CloudFormation::Init section to specify what application packages you want downloaded on the instance, where to download them from, where to install them, what services to start, and what commands to run after the EC2 instance is up and running. You can do the same when you specify an Auto Scaling launch configuration. Here’s a fill-in-the-blanks example:
+
+"MyInstance": {
+
+    "Type": "AWS::EC2::Instance",
+
+    "Metadata" : {
+
+        "AWS::CloudFormation::Init" : {
+
+            "webapp-config": {
+
+                "packages" : {}, "sources" : {}, "files" : {},
+
+                "groups" : {}, "users" : {},
+
+                "commands" : {}, "services" : {}
+Why use AWS::CloudFormation::Init? For several reasons.
+
+First of all, it is declarative. You just specify the desired configuration and let CloudFormation figure out the steps to get to the desired configuration. For example, in the "sources" section you just specify the remote location to download an application tarball from and a directory on the instance where you want to install the application source. CloudFormation takes care of the precise steps to download the tarball, retry on any errors, and extract the source files after the tarball is downloaded.
+
+The same declarative specification is supported for packages or files to be downloaded, users or groups to be created, and commands or services to be executed. If you need to invoke a script, you can simply download that script by using the "files" section and execute the script using the "commands" section.
+
+Configurations defined in AWS::CloudFormation::Init can be grouped into units of deployments, which can be reused, ordered, and executed across instance reboots. For details and examples, see Configsets.
+
+Unlike the application specification coded in an EC2 user data script, the application configuration specified in AWS::CloudFormation::Init is updatable. This is handy, for example, when you want to install a new version of a package, without recreating a running instance.  AWS::CloudFormation::Init supports securely downloading application packages and other data.
+
+More on the benefits. First, let’s take a quick look at the sequence of how AWS::CloudFormation::Init works:
+
+You specify application configuration using the AWS::CloudFormation::Init section for an EC2 instance in your CloudFormation template.
+You kick-off a CloudFormation stack creation using the template.
+The AWS CloudFormation service starts creating a stack, including the EC2 instance.
+After the EC2 instance is up and running, a CloudFormation helper script, cfn-init, is executed on the instance to configure the instance in accordance with your AWS::CloudFormation::Init template specification.*
+Another CloudFormation helper script, cfn-signal, is executed on the instance to let the remote AWS CloudFormation service know the result (success/failure) of the configuration.* You can optionally have the CloudFormation service hold off on marking the EC2 instance state and the stack state “CREATE_COMPLETE” until the CloudFormation service hears a success signal for the instance. The holding-off period is specified in the template using a CreationPolicy.
+*You can download the CloudFormation helper scripts for both Linux and Windows. These come preinstalled on the Linux and Windows AMIs provided by Amazon. You need to specify the commands to trigger cfn-init and cfn-signal in the EC2 user data script. Once an instance is up and running, the EC2 user data script is executed automatically for most Linux distributions and Windows.
+
+Refer to this article for details and try these sample templates to see AWS::CloudFormation::Init in action.
+
+
+
+Best Practice 2: Use IAM roles to securely download software and data
+
+You might want to store the application packages and data at secure locations and allow only authenticated downloads when you are configuring the EC2 instances to run the applications. Use the AWS::CloudFormation::Authentication section to specify credentials for downloading the application packages and data specified in the AWS::CloudFormation::Init section. Although AWS::CloudFormation::Authentication supports several types of authentication, we recommend using an IAM role. For an end-to-end example refer to an earlier blog post “Authenticated File Downloads with CloudFormation.”
+
+
+
+Best Practice 3: Use CloudWatch Logs for Debugging
+
+When you are configuring an instance using AWS::CloudFormation::Init, configuration logs are stored on the instance in the cfn-init.log file and other cfn-*.log files. These logs are helpful for debugging configuration errors. In the past, you had to SSH or RDP into EC2 instances to retrieve these log files. However, with the advent of Amazon CloudWatch Logs, you no longer have to log on to the instances. You can simply stream those logs to CloudWatch and view them in the AWS Management Console. Refer to an earlier blog post “View CloudFormation Logs in the Console” to find out how.
+
+
+
+Best Practice 4: Use cfn-hup for updates
+
+Once your application stack is up and running, chances are that you will update the application, apply an OS patch, or perform some other configuration update in a stack’s lifecycle. You just update the AWS::CloudFormation::Init section in your template (for example, specify a newer version of an application package), and call UpdateStack. When you do, CloudFormation updates the instance metadata in accordance with the updated template. Then the cfn-hup daemon running on the instance detects the updated metadata and reruns cfn-init to update the instance in accordance with the updated configuration. cfn-hup is one of the CloudFormation helper scripts available on both Linux and Windows.
+
+Look for cfn-hup in some of our sample templates to find out how to configure cfn-hup.
+
+
+
+Best Practice 5: Minimize application boot time with custom AMIs
+
+When you are using CloudFormation, you can use anything from AMIs, user data scripts, AWS::CloudFormation::Init, or third-party configuration tools to configure EC2 instances and bootstrap applications. On one hand, AWS::CloudFormation::Init and the other configuration tools provide a great deal of flexibility and control over instance configuration. On the other hand, AMIs offers the fastest application boot times, since your desired configuration and application can be preinstalled while creating a custom AMI.
+
+Some CloudFormation customers optimize their usage by selecting an instance configuration and application bootstrapping method based on the environment. They employ AWS::CloudFormation::Init and other tools for flexibility and control in development and test environments. When they have a desired configuration developed and tested, they create a custom AMI and use that custom AMI in their CloudFormation stacks in production. The result is faster application boot times.
+
+This optimization requires you to maintain two different configuration methods and requires you to keep track of which AMI corresponds to which version-controlled configuration for future reference and updates. As such, this might be worth looking into only if you have a business need to boot up several homogeneous instances, on-demand, in the absolute shortest time possible.
+
+
+
+These best practices are based on the real-world experience of our customers. Reach out to us at @AWSCloudFormer to let us know your feedback on these best practices and additional best practices that you may want to share.
+
+
+
+— Chetan Dandekar, Senior Product Manager, Amazon Web Services.

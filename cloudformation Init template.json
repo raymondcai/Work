@@ -33,3 +33,5 @@
     }
   }
 }
+
+cfn-init will look for config section. you can also specify configsets to execute several config in desired order.
