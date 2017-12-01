@@ -194,7 +194,11 @@
           "config" : {
             "packages" : {
               "yum" : {
-                "httpd" : []
+                "httpd" : [],
+                "telnet": [],
+                "java-1.8.0-openjdk": [],
+                "tomcat8":[],
+                "tomcat8-webapps":[]
               }
             },
 
@@ -206,6 +210,13 @@
                 "mode"    : "000644",
                 "owner"   : "root",
                 "group"   : "root"
+              },
+
+              "commands" : {
+                "01_link_apache_to_tomcat" : {
+                  "command" : "echo \"ProxyPass / ajp://localhost:8009/\" >> /etc/httpd/conf/httpd.conf",
+                  "ignoreErrors" : "false"
+                }
               },
 
               "/etc/cfn/cfn-hup.conf" : {
@@ -239,6 +250,7 @@
             "services" : {
               "sysvinit" : {
                 "httpd"    : { "enabled" : "true", "ensureRunning" : "true" },
+                "tomcat8"    : { "enabled" : "true", "ensureRunning" : "true" },
                 "cfn-hup" : { "enabled" : "true", "ensureRunning" : "true",
                               "files" : ["/etc/cfn/cfn-hup.conf", "/etc/cfn/hooks.d/cfn-auto-reloader.conf"]}
               }
