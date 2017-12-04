@@ -212,13 +212,6 @@
                 "group"   : "root"
               },
 
-              "commands" : {
-                "01_link_apache_to_tomcat" : {
-                  "command" : "echo \"ProxyPass / ajp://localhost:8009/\" >> /etc/httpd/conf/httpd.conf",
-                  "ignoreErrors" : "false"
-                }
-              },
-
               "/etc/cfn/cfn-hup.conf" : {
                 "content" : { "Fn::Join" : ["", [
                   "[main]\n",
@@ -274,6 +267,13 @@
              "         --stack ", { "Ref" : "AWS::StackName" },
              "         --resource LaunchConfig ",
              "         --region ", { "Ref" : "AWS::Region" }, "\n",
+
+             "# Proxy all requests to Tomcat\n",
+             "echo \"ProxyPass  / ajp://localhost:8009/\" >> /etc/httpd/conf/httpd.conf\n",
+
+             "# Start servers\n",
+             "service tomcat8 restart\n",
+             "/etc/init.d/httpd restart\n",
 
              "/opt/aws/bin/cfn-signal -e $? ",
              "         --stack ", { "Ref" : "AWS::StackName" },
