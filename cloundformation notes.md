@@ -13,4 +13,53 @@ cloudformation init is desired state
 "sources" : {
   "/var/www/html" : "http://wordpress.org/latest.tar.gz"
 }
-  download from url, put it into /var/www/html. no need to worry aobut tar extraction etc.
+cfn-init will download from url, put it into /var/www/html. no need to worry aobut tar extraction etc.
+
+for ASG, you can either use existing EC2 instnace or use launch configuration.
+
+Type: "AWS::AutoScaling::AutoScalingGroup"
+Properties:
+  AvailabilityZones:
+    - String
+  Cooldown: String
+  DesiredCapacity: String
+  HealthCheckGracePeriod: Integer
+  HealthCheckType: String
+  InstanceId: String
+  LaunchConfigurationName: String
+  LifecycleHookSpecificationList:
+    - LifecycleHookSpecification
+  LoadBalancerNames:
+    - String
+  MaxSize: String
+  MetricsCollection:
+    - MetricsCollection
+  MinSize: String
+  NotificationConfigurations:
+    - NotificationConfiguration
+  PlacementGroup: String
+  Tags:
+    - TagProperty
+  TargetGroupARNs:
+    - String
+  TerminationPolicies:
+    - String
+  VPCZoneIdentifier:
+    - String
+
+
+cfn-signal
+
+cfn-signal --success|-s signal.to.send \
+        --access-key access.key \
+        --credential-file|-f credential.file \
+        --exit-code|-e exit.code \
+        --http-proxy HTTP.proxy \
+        --https-proxy HTTPS.proxy \
+        --id|-i unique.id \
+        --region AWS.region \
+        --resource resource.logical.ID \
+        --role IAM.role.name \
+        --secret-key secret.key \
+        --stack stack.name.or.stack.ID \
+        --url AWS CloudFormation.endpoint

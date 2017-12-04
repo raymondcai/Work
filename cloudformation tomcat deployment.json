@@ -1,0 +1,53 @@
+http://callistaenterprise.se/blogg/teknik/2013/01/17/set-up-a-tomcat-server-on-aws-using-cloudformation-2/
+
+"UserData" : {
+  "Fn::Base64" : {
+    "Fn::Join" : ["", [
+      "#!/bin/bash -v\n",
+      "date > /home/ec2-user/starttime\n",
+      "yum update -y aws-cfn-bootstrap\n",
+
+      "## Error reporting helper function\n",
+      "function error_exit\n",
+      "{\n",
+      "   /opt/aws/bin/cfn-signal -e 1 -r \"$1\" '", { "Ref" : "WaitHandle" }, "'\n",
+      "   exit 1\n",
+      "}\n",
+
+      "## Initialize CloudFormation bits\n",
+      "/opt/aws/bin/cfn-init -v -s ", { "Ref" : "AWS::StackName" }, " -r FormEngine",
+      "   --access-key ",  { "Ref" : "HostKeys" },
+      "   --secret-key ", {"Fn::GetAtt": ["HostKeys", "SecretAccessKey"]},
+      "   --region ", { "Ref" : "AWS::Region" }, " > /tmp/cfn-init.log 2>&1 || error_exit $(</tmp/cfn-init.log)\n",
+
+      "# Add Tomcat user to sudoers and disable tty\n",
+      "echo \"tomcat ALL=(ALL) NOPASSWD:ALL\" >> /etc/sudoers\n",
+      "echo \"Defaults:%tomcat !requiretty\" >> /etc/sudoers\n",
+      "echo \"Defaults:tomcat !requiretty\" >> /etc/sudoers\n",
+
+      "# Set JVM settings\n",
+      "echo \"JAVA_OPTS='${JAVA_OPTS} -Xms512m -Xmx512m -XX:PermSize=256m -XX:MaxPermSize=512m'\" >> /etc/tomcat6/tomcat6.conf\n",
+
+      "# Tomcat Setup\n",
+      "chown -R tomcat:tomcat /usr/share/tomcat6/\n",
+      "chkconfig tomcat6 on\n",
+      "chkconfig --level 345 tomcat6 on\n",
+
+      "# Configure Apache HTTPD\n",
+      "chkconfig httpd on\n",
+      "chkconfig --level 345 httpd on\n",
+
+      "# Proxy all requests to Tomcat\n",
+      "echo \"ProxyPass  / ajp://localhost:8009/\" >> /etc/httpd/conf/httpd.conf\n",
+
+      "# Start servers\n",
+      "service tomcat6 start\n",
+      "/etc/init.d/httpd start\n",
+
+      "# Send signal to WaitHandle that the setup is completed\n"
+      "/opt/aws/bin/cfn-signal", " -e 0", " '", { "Ref" : "WaitHandle" }, "'","\n",
+
+      "date > /home/ec2-user/stoptime"
+    ]]}}
+  }
+},
