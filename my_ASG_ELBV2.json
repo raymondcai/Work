@@ -5,18 +5,6 @@
 
   "Parameters" : {
 
-    "VpcId" : {
-      "Type" : "AWS::EC2::VPC::Id",
-      "Description" : "VpcId of your existing Virtual Private Cloud (VPC)",
-      "ConstraintDescription" : "must be the VPC Id of an existing Virtual Private Cloud."
-    },
-
-    "Subnets" : {
-      "Type" : "List<AWS::EC2::Subnet::Id>",
-      "Description" : "The list of SubnetIds in your Virtual Private Cloud (VPC)",
-      "ConstraintDescription" : "must be a list of at least two existing subnets associated with at least two different availability zones. They should be residing in the selected Virtual Private Cloud."
-    },
-
     "InstanceType" : {
       "Description" : "WebServer EC2 instance type",
       "Type" : "String",
@@ -175,6 +163,64 @@
 
    },
   "Resources" : {
+    "VPC" : {
+     "Type" : "AWS::EC2::VPC",
+     "Properties" : {
+       "CidrBlock" : "10.0.0.0/16",
+       "Tags" : [ {"Key" : "Application", "Value" : { "Ref" : "AWS::StackId"} } ]
+     }
+   },
+
+   "Subnet" : {
+     "Type" : "AWS::EC2::Subnet",
+     "Properties" : {
+       "VpcId" : { "Ref" : "VPC" },
+       "CidrBlock" : "10.0.0.0/24",
+       "Tags" : [ {"Key" : "Application", "Value" : { "Ref" : "AWS::StackId"} } ]
+     }
+   },
+
+   "InternetGateway" : {
+     "Type" : "AWS::EC2::InternetGateway",
+     "Properties" : {
+       "Tags" : [ {"Key" : "Application", "Value" : { "Ref" : "AWS::StackId"} } ]
+     }
+   },
+
+   "AttachGateway" : {
+      "Type" : "AWS::EC2::VPCGatewayAttachment",
+      "Properties" : {
+        "VpcId" : { "Ref" : "VPC" },
+        "InternetGatewayId" : { "Ref" : "InternetGateway" }
+      }
+   },
+
+   "RouteTable" : {
+     "Type" : "AWS::EC2::RouteTable",
+     "Properties" : {
+       "VpcId" : {"Ref" : "VPC"},
+       "Tags" : [ {"Key" : "Application", "Value" : { "Ref" : "AWS::StackId"} } ]
+     }
+   },
+
+   "Route" : {
+     "Type" : "AWS::EC2::Route",
+     "DependsOn" : "AttachGateway",
+     "Properties" : {
+       "RouteTableId" : { "Ref" : "RouteTable" },
+       "DestinationCidrBlock" : "0.0.0.0/0",
+       "GatewayId" : { "Ref" : "InternetGateway" }
+     }
+   },
+
+   "SubnetRouteTableAssociation" : {
+     "Type" : "AWS::EC2::SubnetRouteTableAssociation",
+     "Properties" : {
+       "SubnetId" : { "Ref" : "Subnet" },
+       "RouteTableId" : { "Ref" : "RouteTable" }
+     }
+   },
+
     "WebServerGroup" : {
       "Type" : "AWS::AutoScaling::AutoScalingGroup",
       "Properties" : {
