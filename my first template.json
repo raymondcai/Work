@@ -126,8 +126,8 @@
         },
         "VpcId": {
           "Ref": "VPC"
-        },
-      },
+        }
+      }
     },
     "PublicRouteTable2PubSubnet": {
       "Type": "AWS::EC2::SubnetRouteTableAssociation",
@@ -137,7 +137,7 @@
         },
         "SubnetId": {
           "Ref": "PublicSubnet"
-        },
+        }
       },
     "WebServer2": {
       "Type": "AWS::EC2::Instance",
@@ -193,7 +193,7 @@
             ]
           }
         }
-      },
+      }
   },
   "Parameters": {
     "InstanceType": {
