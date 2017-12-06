@@ -467,7 +467,7 @@
     "BackendLaunchConfig"  : {
       "Type" : "AWS::AutoScaling::LaunchConfiguration",
       "Metadata" : {
-        "Comment1" : "Configure the Backend server to respond to requests, Tomcat server listens on port 8080/tcp and 8009/tcp",
+        "Comment1" : "Configure the Backend server to respond to requests, Tomcat server listens on port 8080/tcp using HTTP protocol aand 8009/tcp using AJP protocol",
 
         "AWS::CloudFormation::Init" : {
           "config" : {
