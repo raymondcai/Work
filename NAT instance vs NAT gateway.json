@@ -127,10 +127,10 @@ NAT Gateway
     ...
 }
 
+amzn-ami-vpc-nat-hvm-2017.09.1.20171120-x86_64-ebs ami-25ef665f us-east-1
 amzn-ami-vpc-nat-hvm-2017.09.1.20171120-x86_64-ebs ami-e71d2587 us-west-1
 amzn-ami-vpc-nat-hvm-2017.09.1.20171120-x86_64-ebs ami-38469440 us-west-2
-amzn-ami-vpc-nat-hvm-2017.09.1.20171120-x86_64-ebs ami-25ef665f us-east-1
 
+amzn-ami-hvm-2016.03.1.x86_64-ebs ami-69f41304 us-east-1
 amzn-ami-hvm-2016.03.1.x86_64-ebs ami-6f80fe0f us-west-1
 amzn-ami-hvm-2016.03.1.x86_64-ebs ami-d8f704b8 us-west-2
-amzn-ami-hvm-2016.03.1.x86_64-ebs ami-69f41304 us-east-1

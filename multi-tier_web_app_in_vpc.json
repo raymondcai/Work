@@ -68,14 +68,10 @@
 
   "Mappings" : {
     "AWSNATAMI" : {
-      "us-east-1"      : { "AMI" : "ami-c6699baf" },
-      "us-west-2"      : { "AMI" : "ami-52ff7262" },
-      "us-west-1"      : { "AMI" : "ami-3bcc9e7e" },
-      "eu-west-1"      : { "AMI" : "ami-0b5b6c7f" },
-      "ap-southeast-1" : { "AMI" : "ami-02eb9350" },
-      "ap-southeast-2" : { "AMI" : "ami-ab990e91" },
-      "ap-northeast-1" : { "AMI" : "ami-14d86d15" },
-      "sa-east-1"      : { "AMI" : "ami-0439e619" }
+      "us-east-1"      : { "AMI" : "ami-25ef665f" },
+      "us-west-1"      : { "AMI" : "ami-38469440" },
+      "us-west-2"      : { "AMI" : "ami-52ff7262" }
+
     },
 
     "AWSInstanceType2Arch" : {
@@ -97,14 +93,10 @@
     },
 
     "AWSRegionArch2AMI" : {
-      "us-east-1"      : { "32" : "ami-a0cd60c9", "64" : "ami-aecd60c7", "64Cluster" : "ami-a8cd60c1",      "64GPU" : "ami-eccf6285" },
-      "us-west-2"      : { "32" : "ami-46da5576", "64" : "ami-48da5578", "64Cluster" : "NOT_YET_SUPPORTED", "64GPU" : "NOT_YET_SUPPORTED" },
-      "us-west-1"      : { "32" : "ami-7d4c6938", "64" : "ami-734c6936", "64Cluster" : "NOT_YET_SUPPORTED", "64GPU" : "NOT_YET_SUPPORTED" },
-      "eu-west-1"      : { "32" : "ami-61555115", "64" : "ami-6d555119", "64Cluster" : "ami-67555113",      "64GPU" : "NOT_YET_SUPPORTED" },
-      "ap-southeast-1" : { "32" : "ami-220b4a70", "64" : "ami-3c0b4a6e", "64Cluster" : "NOT_YET_SUPPORTED", "64GPU" : "NOT_YET_SUPPORTED" },
-      "ap-southeast-2" : { "32" : "ami-b3990e89", "64" : "ami-bd990e87", "64Cluster" : "NOT_YET_SUPPORTED", "64GPU" : "NOT_YET_SUPPORTED" },
-      "ap-northeast-1" : { "32" : "ami-2a19aa2b", "64" : "ami-2819aa29", "64Cluster" : "NOT_YET_SUPPORTED", "64GPU" : "NOT_YET_SUPPORTED" },
-      "sa-east-1"      : { "32" : "ami-f836e8e5", "64" : "ami-fe36e8e3", "64Cluster" : "NOT_YET_SUPPORTED", "64GPU" : "NOT_YET_SUPPORTED" }
+      "us-east-1"      : { "32" : "ami-a0cd60c9", "64" : "ami-69f41304", "64Cluster" : "ami-a8cd60c1",      "64GPU" : "ami-eccf6285" },
+      "us-west-1"      : { "32" : "ami-7d4c6938", "64" : "ami-6f80fe0f", "64Cluster" : "NOT_YET_SUPPORTED", "64GPU" : "NOT_YET_SUPPORTED" },
+      "us-west-2"      : { "32" : "ami-46da5576", "64" : "ami-d8f704b8", "64Cluster" : "NOT_YET_SUPPORTED", "64GPU" : "NOT_YET_SUPPORTED" }
+
     },
 
     "SubnetConfig" : {
