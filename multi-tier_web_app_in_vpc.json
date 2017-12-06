@@ -25,7 +25,7 @@
       "Description" : "Frontend Server EC2 instance type",
       "Type" : "String",
       "Default" : "t2.micro",
-      "AllowedValues" : [ "t1.micro","t2.micro","m1.medium","m1.large","m1.xlarge","m2.xlarge","m2.2xlarge","m2.4xlarge","m3.xlarge","m3.2xlarge","c1.medium","c1.xlarge","cc1.4xlarge","cc2.8xlarge","cg1.4xlarge"],
+      "AllowedValues" : [ "t1.micro","t2.micro","m1.medium"],
       "ConstraintDescription" : "must be a valid EC2 instance type."
     },
 
@@ -39,7 +39,7 @@
       "Description" : "Backend Server EC2 instance type",
       "Type" : "String",
       "Default" : "t2.micro",
-      "AllowedValues" : [ "t1.micro","t2.micro","m1.medium","m1.large","m1.xlarge","m2.xlarge","m2.2xlarge","m2.4xlarge","m3.xlarge","m3.2xlarge","c1.medium","c1.xlarge","cc1.4xlarge","cc2.8xlarge","cg1.4xlarge"],
+      "AllowedValues" : [ "t1.micro","t2.micro","m1.medium"],
       "ConstraintDescription" : "must be a valid EC2 instance type."
     },
 
@@ -53,7 +53,7 @@
       "Description" : "Bastion Host EC2 instance type",
       "Type" : "String",
       "Default" : "t2.micro",
-      "AllowedValues" : [ "t1.micro","t2.micro","m1.medium","m1.large","m1.xlarge","m2.xlarge","m2.2xlarge","m2.4xlarge","m3.xlarge","m3.2xlarge","c1.medium","c1.xlarge","cc1.4xlarge","cc2.8xlarge","cg1.4xlarge"],
+      "AllowedValues" : [ "t1.micro","t2.micro","m1.medium"],
       "ConstraintDescription" : "must be a valid EC2 instance type."
     },
 
@@ -61,7 +61,7 @@
       "Description" : "NET Device EC2 instance type",
       "Type" : "String",
       "Default" : "t2.micro",
-      "AllowedValues" : [ "t1.micro","t2.micro","m1.medium","m1.large","m1.xlarge","m2.xlarge","m2.2xlarge","m2.4xlarge","m3.xlarge","m3.2xlarge","c1.medium","c1.xlarge","cc1.4xlarge","cc2.8xlarge","cg1.4xlarge"],
+      "AllowedValues" : [ "t1.micro","t2.micro","m1.medium"],
       "ConstraintDescription" : "must be a valid EC2 instance type."
     }
   },
@@ -77,26 +77,13 @@
     "AWSInstanceType2Arch" : {
       "t1.micro"    : { "Arch" : "64" },
       "t2.micro"    : { "Arch" : "64" },
-      "m1.medium"   : { "Arch" : "64" },
-      "m1.large"    : { "Arch" : "64" },
-      "m1.xlarge"   : { "Arch" : "64" },
-      "m2.xlarge"   : { "Arch" : "64" },
-      "m2.2xlarge"  : { "Arch" : "64" },
-      "m2.4xlarge"  : { "Arch" : "64" },
-      "m3.xlarge"   : { "Arch" : "64" },
-      "m3.2xlarge"  : { "Arch" : "64" },
-      "c1.medium"   : { "Arch" : "64" },
-      "c1.xlarge"   : { "Arch" : "64" },
-      "cc1.4xlarge" : { "Arch" : "64Cluster" },
-      "cc2.8xlarge" : { "Arch" : "64Cluster" },
-      "cg1.4xlarge" : { "Arch" : "64GPU" }
+      "m1.medium"   : { "Arch" : "64" }
     },
 
     "AWSRegionArch2AMI" : {
-      "us-east-1"      : { "32" : "ami-a0cd60c9", "64" : "ami-69f41304", "64Cluster" : "ami-a8cd60c1",      "64GPU" : "ami-eccf6285" },
-      "us-west-1"      : { "32" : "ami-7d4c6938", "64" : "ami-6f80fe0f", "64Cluster" : "NOT_YET_SUPPORTED", "64GPU" : "NOT_YET_SUPPORTED" },
-      "us-west-2"      : { "32" : "ami-46da5576", "64" : "ami-d8f704b8", "64Cluster" : "NOT_YET_SUPPORTED", "64GPU" : "NOT_YET_SUPPORTED" }
-
+      "us-east-1"      : { "64" : "ami-69f41304" },
+      "us-west-1"      : { "64" : "ami-6f80fe0f" },
+      "us-west-2"      : { "64" : "ami-d8f704b8" }
     },
 
     "SubnetConfig" : {
