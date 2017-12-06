@@ -69,8 +69,8 @@
   "Mappings" : {
     "AWSNATAMI" : {
       "us-east-1"      : { "AMI" : "ami-25ef665f" },
-      "us-west-1"      : { "AMI" : "ami-38469440" },
-      "us-west-2"      : { "AMI" : "ami-52ff7262" }
+      "us-west-1"      : { "AMI" : "ami-e71d2587" },
+      "us-west-2"      : { "AMI" : "ami-38469440" }
 
     },
 
@@ -463,6 +463,7 @@
           "config" : {
             "packages" : {
               "yum" : {
+                "telnet":[],
                 "httpd"        : []
               }
             },
@@ -482,8 +483,8 @@
 
               "/etc/httpd/conf.d/maptobackend.conf" : {
                 "content" : { "Fn::Join" : ["", [
-                   "ProxyPass /backend http://", { "Fn::GetAtt" : [ "PrivateElasticLoadBalancer", "DNSName" ]}, "\n",
-                   "ProxyPassReverse /backend http://", { "Fn::GetAtt" : [ "PrivateElasticLoadBalancer", "DNSName" ]}, "\n"
+                   "ProxyPass /backend http://", { "Fn::GetAtt" : [ "PrivateElasticLoadBalancer", "DNSName" ]}, ":8080/", "\n",
+                   "ProxyPassReverse /backend http://", { "Fn::GetAtt" : [ "PrivateElasticLoadBalancer", "DNSName" ]}, ":8080/", "\n"
                 ]]},
                 "mode"    : "000644",
                 "owner"   : "root",
@@ -532,6 +533,7 @@
           { "IpProtocol" : "tcp", "FromPort" : "22", "ToPort" : "22", "SourceSecurityGroupId" : { "Ref" : "BastionSecurityGroup" } } ],
         "SecurityGroupEgress" : [
            { "IpProtocol" : "tcp", "FromPort" : "80",  "ToPort" : "80",  "CidrIp" : "0.0.0.0/0" } ,
+           { "IpProtocol" : "tcp", "FromPort" : "8080",  "ToPort" : "8080",  "CidrIp" : "0.0.0.0/0" } ,
            { "IpProtocol" : "tcp", "FromPort" : "443", "ToPort" : "443", "CidrIp" : "0.0.0.0/0" } ]
       }
     },
@@ -556,10 +558,10 @@
       "Properties" : {
         "SecurityGroups" : [ { "Ref" : "PrivateLoadBalancerSecurityGroup" } ],
         "Subnets" : [ { "Ref" : "PrivateSubnet" } ],
-        "Listeners" : [ { "LoadBalancerPort" : "80", "InstancePort" : "80", "Protocol" : "HTTP" } ],
+        "Listeners" : [ { "LoadBalancerPort" : "8080", "InstancePort" : "8080", "Protocol" : "HTTP" } ],
         "Scheme" : "internal",
         "HealthCheck" : {
-          "Target" : "HTTP:80/",
+          "Target" : "HTTP:8080/",
           "HealthyThreshold" : "3",
           "UnhealthyThreshold" : "5",
           "Interval" : "90",
@@ -571,10 +573,10 @@
     "PrivateLoadBalancerSecurityGroup" : {
       "Type" : "AWS::EC2::SecurityGroup",
       "Properties" : {
-        "GroupDescription" : "Private ELB Security Group with HTTP access on port 80 from the Frontend Fleet only",
+        "GroupDescription" : "Private ELB Security Group with HTTP access on port 8080 from the Frontend Fleet only",
         "VpcId" : { "Ref" : "VPC" },
-        "SecurityGroupIngress" : [ { "IpProtocol" : "tcp", "FromPort" : "80", "ToPort" : "80", "SourceSecurityGroupId" : { "Ref" : "FrontendSecurityGroup" } } ],
-        "SecurityGroupEgress" : [ { "IpProtocol" : "tcp", "FromPort" : "80", "ToPort" : "80", "CidrIp" : "0.0.0.0/0" } ]
+        "SecurityGroupIngress" : [ { "IpProtocol" : "tcp", "FromPort" : "8080", "ToPort" : "8080", "SourceSecurityGroupId" : { "Ref" : "FrontendSecurityGroup" } } ],
+        "SecurityGroupEgress" : [ { "IpProtocol" : "tcp", "FromPort" : "8080", "ToPort" : "8080", "CidrIp" : "0.0.0.0/0" } ]
       }
     },
 
@@ -595,35 +597,25 @@
     "BackendLaunchConfig"  : {
       "Type" : "AWS::AutoScaling::LaunchConfiguration",
       "Metadata" : {
-        "Comment1" : "Configure the Backend server to respond to requests",
+        "Comment1" : "Configure the Backend server to respond to requests, Tomcat server listens on port 8080/tcp and 8009/tcp",
 
         "AWS::CloudFormation::Init" : {
           "config" : {
             "packages" : {
               "yum" : {
-                "httpd"        : []
-              }
-            },
-
-            "files" : {
-              "/var/www/html/index.html" : {
-                "content" : { "Fn::Join" : ["\n", [
-                   "<img src=\"https://s3.amazonaws.com/cloudformation-examples/cloudformation_graphic.png\" alt=\"AWS CloudFormation Logo\"/>",
-                   "<h1>Congratulations, this request was served from the backend fleet</h1>"
-                ]]},
-                "mode"    : "000644",
-                "owner"   : "root",
-                "group"   : "root"
+                "telnet":[],
+                "java-1.8.0-openjdk": [],
+                "tomcat8":[],
+                "tomcat8-webapps":[]
               }
             },
 
             "services" : {
               "sysvinit" : {
-                "httpd" : {
+                "tomcat8" : {
                   "enabled"       : "true",
-                  "ensureRunning" : "true",
-                  "files"         : [ "/var/www/html/index.html" ]
-                }
+                  "ensureRunning" : "true"
+                  }
               }
             }
           }
@@ -654,10 +646,11 @@
         "GroupDescription" : "Allow access from private load balancer and bastion as well as outbound HTTP and HTTPS traffic",
         "VpcId" : { "Ref" : "VPC" },
         "SecurityGroupIngress" : [
-          { "IpProtocol" : "tcp", "FromPort" : "80", "ToPort" : "80", "SourceSecurityGroupId" : { "Ref" : "PrivateLoadBalancerSecurityGroup" } } ,
+          { "IpProtocol" : "tcp", "FromPort" : "8080", "ToPort" : "8080", "SourceSecurityGroupId" : { "Ref" : "PrivateLoadBalancerSecurityGroup" } } ,
           { "IpProtocol" : "tcp", "FromPort" : "22", "ToPort" : "22", "SourceSecurityGroupId" : { "Ref" : "BastionSecurityGroup" } } ],
         "SecurityGroupEgress" : [
            { "IpProtocol" : "tcp", "FromPort" : "80",  "ToPort" : "80",  "CidrIp" : "0.0.0.0/0" } ,
+           { "IpProtocol" : "tcp", "FromPort" : "8080",  "ToPort" : "8080",  "CidrIp" : "0.0.0.0/0" } ,
            { "IpProtocol" : "tcp", "FromPort" : "443", "ToPort" : "443", "CidrIp" : "0.0.0.0/0" } ]
       }
     },
@@ -678,9 +671,13 @@
   },
 
   "Outputs" : {
-    "WebSite" : {
+    "PublicElasticLoadBalancer" : {
       "Description" : "URL of the website",
       "Value" :  { "Fn::Join" : [ "", [ "http://", { "Fn::GetAtt" : [ "PublicElasticLoadBalancer", "DNSName" ]}]]}
+    },
+    "PrivateElasticLoadBalancer" : {
+      "Description" : "URL of the website",
+      "Value" :  { "Fn::Join" : [ "", [ "http://", { "Fn::GetAtt" : [ "PrivateElasticLoadBalancer", "DNSName" ]}]]}
     },
     "Bastion" : {
       "Description" : "IP Address of the Bastion host",
