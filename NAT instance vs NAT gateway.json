@@ -1,0 +1,136 @@
+https://aws.amazon.com/blogs/apn/taking-nat-to-the-next-level-in-aws-cloudformation-templates/
+
+NAT instance. self managed, need to consider scalability
+{
+    ...
+    "Resources" : {
+        ...
+        "NAT1EIP" : {
+            "Type" : "AWS::EC2::EIP",
+            "Properties" : {
+                "Domain" : "vpc",
+                "InstanceId" : {
+                    "Ref" : "NAT1"
+                }
+            }
+        },
+        "NAT1" : {
+            "Type" : "AWS::EC2::Instance",
+            "DependsOn" : "VPCGatewayAttachment",
+            "Properties" : {
+                "ImageId" : {
+                    "Fn::FindInMap" : [
+                        "AWSRegionArchNatAMI",
+                        {
+                            "Ref" : "AWS::Region"
+                        },
+                        {
+                            "Fn::FindInMap" : [
+                                 "AWSInstanceType2Arch",
+                                 {
+                                     "Ref" : "NATInstanceType"
+                                 },
+                                 "Arch"
+                            ]
+                        }
+                    ]
+                },
+                "InstanceType" : {
+                    "Ref" : "NATInstanceType"
+                },
+                "Tags" : [
+                    {
+                        "Key" : "Name",
+                        "Value" : "NAT1"
+                    }
+                ],
+                "NetworkInterfaces" : [
+                    {
+                        "GroupSet" : [
+                            {
+                                "Ref" : "NATSecurityGroup"
+                            }
+                        ],
+                        "AssociatePublicIpAddress" : "true",
+                        "DeviceIndex" : "0",
+                        "DeleteOnTermination" : "true",
+                        "SubnetId" : {
+                            "Ref" : "PublicSubnetAZ1"
+                        }
+                    }
+                ],
+                "KeyName"           : {
+                    "Ref" : "KeyPairName"
+                },
+                "SourceDestCheck"   : "false"
+           }
+       },
+       "PrivateRoute1" : {
+           "Type" : "AWS::EC2::Route",
+           "Properties" : {
+               "RouteTableId" : {
+                   "Ref" : "PrivateRouteTable"
+               },
+               "DestinationCidrBlock" : "0.0.0.0/0",
+               "InstanceId" : {
+                   "Ref" : "NAT1"
+               }
+           }
+       },
+       ...
+   }
+   ...
+}
+
+
+NAT Gateway
+
+{
+    ...
+    "Resources" : {
+        ...
+        "NATGateway1EIP" : {
+            "Type" : "AWS::EC2::EIP",
+            "Properties" : {
+                "Domain" : "vpc"
+            }
+        },
+        "NATGateway1" : {
+            "Type" : "AWS::EC2::NatGateway",
+            "DependsOn" : "VPCGatewayAttachment",
+            "Properties" : {
+                "AllocationId" : {
+                    "Fn::GetAtt" : [
+                        "NATGateway1EIP",
+                        "AllocationId"
+                    ]
+                },
+                "SubnetId" : {
+                    "Ref" : "PublicSubnetAZ1"
+                }
+            }
+        },
+        "PrivateRoute1" : {
+            "Type" : "AWS::EC2::Route",
+            "Properties" : {
+                "RouteTableId" : {
+                    "Ref" : "PrivateRouteTable1"
+                },
+                "DestinationCidrBlock" : "0.0.0.0/0",
+                "NatGatewayId" : {
+                    "Ref" : "NATGateway1"
+                }
+            }
+        },
+        ...
+    }
+    ...
+}
+
+amzn-ami-vpc-nat-hvm-2017.09.1.20171120-x86_64-ebs ami-e71d2587 us-west-1
+amzn-ami-vpc-nat-hvm-2017.09.1.20171120-x86_64-ebs ami-38469440 us-west-2
+amzn-ami-vpc-nat-hvm-2017.09.1.20171120-x86_64-ebs ami-25ef665f us-east-1
+
+amzn-ami-hvm-2016.03.1.x86_64-ebs ami-6f80fe0f us-west-1
+amzn-ami-hvm-2016.03.1.x86_64-ebs ami-d8f704b8 us-west-2
+amzn-ami-hvm-2016.03.1.x86_64-ebs ami-69f41304 us-east-1

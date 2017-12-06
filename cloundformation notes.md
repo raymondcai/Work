@@ -8,58 +8,39 @@ MAPPINGS: In the template, you'll also find a Mappings section. You use mappings
 
 
 
-cloudformation init is desired state
+cloudformation init is desired state, similar to cloud-init, it is declarative.
 
 "sources" : {
   "/var/www/html" : "http://wordpress.org/latest.tar.gz"
 }
-cfn-init will download from url, put it into /var/www/html. no need to worry aobut tar extraction etc.
-
-for ASG, you can either use existing EC2 instnace or use launch configuration.
-
-Type: "AWS::AutoScaling::AutoScalingGroup"
-Properties:
-  AvailabilityZones:
-    - String
-  Cooldown: String
-  DesiredCapacity: String
-  HealthCheckGracePeriod: Integer
-  HealthCheckType: String
-  InstanceId: String
-  LaunchConfigurationName: String
-  LifecycleHookSpecificationList:
-    - LifecycleHookSpecification
-  LoadBalancerNames:
-    - String
-  MaxSize: String
-  MetricsCollection:
-    - MetricsCollection
-  MinSize: String
-  NotificationConfigurations:
-    - NotificationConfiguration
-  PlacementGroup: String
-  Tags:
-    - TagProperty
-  TargetGroupARNs:
-    - String
-  TerminationPolicies:
-    - String
-  VPCZoneIdentifier:
-    - String
+  download from url, put it into /var/www/html. no need to worry aobut tar extraction etc.
 
 
-cfn-signal
 
-cfn-signal --success|-s signal.to.send \
-        --access-key access.key \
-        --credential-file|-f credential.file \
-        --exit-code|-e exit.code \
-        --http-proxy HTTP.proxy \
-        --https-proxy HTTPS.proxy \
-        --id|-i unique.id \
-        --region AWS.region \
-        --resource resource.logical.ID \
-        --role IAM.role.name \
-        --secret-key secret.key \
-        --stack stack.name.or.stack.ID \
-        --url AWS CloudFormation.endpoint
+Need to pay attention to metadata under cloudformation init and ec2 user-data.
+
+"Properties": {
+        "ImageId" : { "Fn::FindInMap" : [ "AWSRegionArch2AMI", { "Ref" : "AWS::Region" },
+                          { "Fn::FindInMap" : [ "AWSInstanceType2Arch", { "Ref" : "InstanceType" }, "Arch" ] } ] },
+        "InstanceType"   : { "Ref" : "InstanceType" },
+        "SecurityGroups" : [ {"Ref" : "WebServerSecurityGroup"} ],
+        "KeyName"        : { "Ref" : "KeyName" },
+        "UserData" : { "Fn::Base64" : { "Fn::Join" : ["", [
+                       "#!/bin/bash -xe\n",
+                       "yum update -y aws-cfn-bootstrap\n",
+
+                       "/opt/aws/bin/cfn-init -v ",
+                       "         --stack ", { "Ref" : "AWS::StackName" },
+                       "         --resource WebServer ",
+                       "         --configsets wordpress_install ",
+                       "         --region ", { "Ref" : "AWS::Region" }, "\n",
+
+                       "/opt/aws/bin/cfn-signal -e $? ",
+                       "         --stack ", { "Ref" : "AWS::StackName" },
+                       "         --resource WebServer ",
+                       "         --region ", { "Ref" : "AWS::Region" }, "\n"
+        ]]}}
+      },
+
+
+  "mode"  : "000400", first 3 digis are for symlink, last 3 are permission.

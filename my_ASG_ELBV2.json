@@ -35,223 +35,343 @@
        "t1.micro"    : { "Arch" : "PV64"   },
        "t2.nano"     : { "Arch" : "HVM64"  },
        "t2.micro"    : { "Arch" : "HVM64"  },
-       "t2.small"    : { "Arch" : "HVM64"  },
-       "t2.medium"   : { "Arch" : "HVM64"  },
-       "t2.large"    : { "Arch" : "HVM64"  },
-       "m1.small"    : { "Arch" : "PV64"   },
-       "m1.medium"   : { "Arch" : "PV64"   },
-       "m1.large"    : { "Arch" : "PV64"   },
-       "m1.xlarge"   : { "Arch" : "PV64"   },
-       "m2.xlarge"   : { "Arch" : "PV64"   },
-       "m2.2xlarge"  : { "Arch" : "PV64"   },
-       "m2.4xlarge"  : { "Arch" : "PV64"   },
-       "m3.medium"   : { "Arch" : "HVM64"  },
-       "m3.large"    : { "Arch" : "HVM64"  },
-       "m3.xlarge"   : { "Arch" : "HVM64"  },
-       "m3.2xlarge"  : { "Arch" : "HVM64"  },
-       "m4.large"    : { "Arch" : "HVM64"  },
-       "m4.xlarge"   : { "Arch" : "HVM64"  },
-       "m4.2xlarge"  : { "Arch" : "HVM64"  },
-       "m4.4xlarge"  : { "Arch" : "HVM64"  },
-       "m4.10xlarge" : { "Arch" : "HVM64"  },
-       "c1.medium"   : { "Arch" : "PV64"   },
-       "c1.xlarge"   : { "Arch" : "PV64"   },
-       "c3.large"    : { "Arch" : "HVM64"  },
-       "c3.xlarge"   : { "Arch" : "HVM64"  },
-       "c3.2xlarge"  : { "Arch" : "HVM64"  },
-       "c3.4xlarge"  : { "Arch" : "HVM64"  },
-       "c3.8xlarge"  : { "Arch" : "HVM64"  },
-       "c4.large"    : { "Arch" : "HVM64"  },
-       "c4.xlarge"   : { "Arch" : "HVM64"  },
-       "c4.2xlarge"  : { "Arch" : "HVM64"  },
-       "c4.4xlarge"  : { "Arch" : "HVM64"  },
-       "c4.8xlarge"  : { "Arch" : "HVM64"  },
-       "g2.2xlarge"  : { "Arch" : "HVMG2"  },
-       "g2.8xlarge"  : { "Arch" : "HVMG2"  },
-       "r3.large"    : { "Arch" : "HVM64"  },
-       "r3.xlarge"   : { "Arch" : "HVM64"  },
-       "r3.2xlarge"  : { "Arch" : "HVM64"  },
-       "r3.4xlarge"  : { "Arch" : "HVM64"  },
-       "r3.8xlarge"  : { "Arch" : "HVM64"  },
-       "i2.xlarge"   : { "Arch" : "HVM64"  },
-       "i2.2xlarge"  : { "Arch" : "HVM64"  },
-       "i2.4xlarge"  : { "Arch" : "HVM64"  },
-       "i2.8xlarge"  : { "Arch" : "HVM64"  },
-       "d2.xlarge"   : { "Arch" : "HVM64"  },
-       "d2.2xlarge"  : { "Arch" : "HVM64"  },
-       "d2.4xlarge"  : { "Arch" : "HVM64"  },
-       "d2.8xlarge"  : { "Arch" : "HVM64"  },
-       "hi1.4xlarge" : { "Arch" : "HVM64"  },
-       "hs1.8xlarge" : { "Arch" : "HVM64"  },
-       "cr1.8xlarge" : { "Arch" : "HVM64"  },
-       "cc2.8xlarge" : { "Arch" : "HVM64"  }
+       "t2.small"    : { "Arch" : "HVM64"  }
      },
 
-     "AWSInstanceType2NATArch" : {
-       "t1.micro"    : { "Arch" : "NATPV64"   },
-       "t2.nano"     : { "Arch" : "NATHVM64"  },
-       "t2.micro"    : { "Arch" : "NATHVM64"  },
-       "t2.small"    : { "Arch" : "NATHVM64"  },
-       "t2.medium"   : { "Arch" : "NATHVM64"  },
-       "t2.large"    : { "Arch" : "NATHVM64"  },
-       "m1.small"    : { "Arch" : "NATPV64"   },
-       "m1.medium"   : { "Arch" : "NATPV64"   },
-       "m1.large"    : { "Arch" : "NATPV64"   },
-       "m1.xlarge"   : { "Arch" : "NATPV64"   },
-       "m2.xlarge"   : { "Arch" : "NATPV64"   },
-       "m2.2xlarge"  : { "Arch" : "NATPV64"   },
-       "m2.4xlarge"  : { "Arch" : "NATPV64"   },
-       "m3.medium"   : { "Arch" : "NATHVM64"  },
-       "m3.large"    : { "Arch" : "NATHVM64"  },
-       "m3.xlarge"   : { "Arch" : "NATHVM64"  },
-       "m3.2xlarge"  : { "Arch" : "NATHVM64"  },
-       "m4.large"    : { "Arch" : "NATHVM64"  },
-       "m4.xlarge"   : { "Arch" : "NATHVM64"  },
-       "m4.2xlarge"  : { "Arch" : "NATHVM64"  },
-       "m4.4xlarge"  : { "Arch" : "NATHVM64"  },
-       "m4.10xlarge" : { "Arch" : "NATHVM64"  },
-       "c1.medium"   : { "Arch" : "NATPV64"   },
-       "c1.xlarge"   : { "Arch" : "NATPV64"   },
-       "c3.large"    : { "Arch" : "NATHVM64"  },
-       "c3.xlarge"   : { "Arch" : "NATHVM64"  },
-       "c3.2xlarge"  : { "Arch" : "NATHVM64"  },
-       "c3.4xlarge"  : { "Arch" : "NATHVM64"  },
-       "c3.8xlarge"  : { "Arch" : "NATHVM64"  },
-       "c4.large"    : { "Arch" : "NATHVM64"  },
-       "c4.xlarge"   : { "Arch" : "NATHVM64"  },
-       "c4.2xlarge"  : { "Arch" : "NATHVM64"  },
-       "c4.4xlarge"  : { "Arch" : "NATHVM64"  },
-       "c4.8xlarge"  : { "Arch" : "NATHVM64"  },
-       "g2.2xlarge"  : { "Arch" : "NATHVMG2"  },
-       "g2.8xlarge"  : { "Arch" : "NATHVMG2"  },
-       "r3.large"    : { "Arch" : "NATHVM64"  },
-       "r3.xlarge"   : { "Arch" : "NATHVM64"  },
-       "r3.2xlarge"  : { "Arch" : "NATHVM64"  },
-       "r3.4xlarge"  : { "Arch" : "NATHVM64"  },
-       "r3.8xlarge"  : { "Arch" : "NATHVM64"  },
-       "i2.xlarge"   : { "Arch" : "NATHVM64"  },
-       "i2.2xlarge"  : { "Arch" : "NATHVM64"  },
-       "i2.4xlarge"  : { "Arch" : "NATHVM64"  },
-       "i2.8xlarge"  : { "Arch" : "NATHVM64"  },
-       "d2.xlarge"   : { "Arch" : "NATHVM64"  },
-       "d2.2xlarge"  : { "Arch" : "NATHVM64"  },
-       "d2.4xlarge"  : { "Arch" : "NATHVM64"  },
-       "d2.8xlarge"  : { "Arch" : "NATHVM64"  },
-       "hi1.4xlarge" : { "Arch" : "NATHVM64"  },
-       "hs1.8xlarge" : { "Arch" : "NATHVM64"  },
-       "cr1.8xlarge" : { "Arch" : "NATHVM64"  },
-       "cc2.8xlarge" : { "Arch" : "NATHVM64"  }
+     "AWSNATAMI" : {
+       "us-east-1"      : { "AMI" : "ami-25ef665f" },
+       "us-west-1"      : { "AMI" : "ami-e71d2587" },
+       "us-west-2"      : { "AMI" : "ami-38469440" }
      },
+
      "AWSRegionArch2AMI" : {
        "us-east-1"        : {"PV64" : "ami-2a69aa47", "HVM64" : "ami-6869aa05", "HVMG2" : "ami-1f12e965"},
-       "us-west-2"        : {"PV64" : "ami-7f77b31f", "HVM64" : "ami-7172b611", "HVMG2" : "ami-5c9b6124"},
        "us-west-1"        : {"PV64" : "ami-a2490dc2", "HVM64" : "ami-31490d51", "HVMG2" : "ami-7291a112"},
-       "eu-west-1"        : {"PV64" : "ami-4cdd453f", "HVM64" : "ami-f9dd458a", "HVMG2" : "ami-b411c5cd"},
-       "eu-west-2"        : {"PV64" : "NOT_SUPPORTED", "HVM64" : "ami-886369ec", "HVMG2" : "NOT_SUPPORTED"},
-       "eu-central-1"     : {"PV64" : "ami-6527cf0a", "HVM64" : "ami-ea26ce85", "HVMG2" : "ami-be40f2d1"},
-       "ap-northeast-1"   : {"PV64" : "ami-3e42b65f", "HVM64" : "ami-374db956", "HVMG2" : "ami-3efd2c58"},
-       "ap-northeast-2"   : {"PV64" : "NOT_SUPPORTED", "HVM64" : "ami-2b408b45", "HVMG2" : "NOT_SUPPORTED"},
-       "ap-southeast-1"   : {"PV64" : "ami-df9e4cbc", "HVM64" : "ami-a59b49c6", "HVMG2" : "ami-3e91ed5d"},
-       "ap-southeast-2"   : {"PV64" : "ami-63351d00", "HVM64" : "ami-dc361ebf", "HVMG2" : "ami-84a142e6"},
-       "ap-south-1"       : {"PV64" : "NOT_SUPPORTED", "HVM64" : "ami-ffbdd790", "HVMG2" : "ami-25ffbe4a"},
-       "us-east-2"        : {"PV64" : "NOT_SUPPORTED", "HVM64" : "ami-f6035893", "HVMG2" : "NOT_SUPPORTED"},
-       "ca-central-1"     : {"PV64" : "NOT_SUPPORTED", "HVM64" : "ami-730ebd17", "HVMG2" : "NOT_SUPPORTED"},
-       "sa-east-1"        : {"PV64" : "ami-1ad34676", "HVM64" : "ami-6dd04501", "HVMG2" : "NOT_SUPPORTED"},
-       "cn-north-1"       : {"PV64" : "ami-77559f1a", "HVM64" : "ami-8e6aa0e3", "HVMG2" : "NOT_SUPPORTED"},
-       "cn-northwest-1"   : {"PV64" : "ami-80707be2", "HVM64" : "ami-cb858fa9", "HVMG2" : "NOT_SUPPORTED"}
+       "us-west-2"        : {"PV64" : "ami-7f77b31f", "HVM64" : "ami-7172b611", "HVMG2" : "ami-5c9b6124"}
      }
-
    },
   "Resources" : {
+
     "VPC" : {
-     "Type" : "AWS::EC2::VPC",
-     "Properties" : {
-       "CidrBlock" : "10.0.0.0/16",
-       "Tags" : [ {"Key" : "Application", "Value" : { "Ref" : "AWS::StackId"} } ]
-     }
-   },
-
-   "Subnet" : {
-     "Type" : "AWS::EC2::Subnet",
-     "Properties" : {
-       "VpcId" : { "Ref" : "VPC" },
-       "CidrBlock" : "10.0.0.0/24",
-       "Tags" : [ {"Key" : "Application", "Value" : { "Ref" : "AWS::StackId"} } ]
-     }
-   },
-
-   "InternetGateway" : {
-     "Type" : "AWS::EC2::InternetGateway",
-     "Properties" : {
-       "Tags" : [ {"Key" : "Application", "Value" : { "Ref" : "AWS::StackId"} } ]
-     }
-   },
-
-   "AttachGateway" : {
-      "Type" : "AWS::EC2::VPCGatewayAttachment",
+      "Type" : "AWS::EC2::VPC",
       "Properties" : {
-        "VpcId" : { "Ref" : "VPC" },
-        "InternetGatewayId" : { "Ref" : "InternetGateway" }
-      }
-   },
-
-   "RouteTable" : {
-     "Type" : "AWS::EC2::RouteTable",
-     "Properties" : {
-       "VpcId" : {"Ref" : "VPC"},
-       "Tags" : [ {"Key" : "Application", "Value" : { "Ref" : "AWS::StackId"} } ]
-     }
-   },
-
-   "Route" : {
-     "Type" : "AWS::EC2::Route",
-     "DependsOn" : "AttachGateway",
-     "Properties" : {
-       "RouteTableId" : { "Ref" : "RouteTable" },
-       "DestinationCidrBlock" : "0.0.0.0/0",
-       "GatewayId" : { "Ref" : "InternetGateway" }
-     }
-   },
-
-   "SubnetRouteTableAssociation" : {
-     "Type" : "AWS::EC2::SubnetRouteTableAssociation",
-     "Properties" : {
-       "SubnetId" : { "Ref" : "Subnet" },
-       "RouteTableId" : { "Ref" : "RouteTable" }
-     }
-   },
-
-    "WebServerGroup" : {
-      "Type" : "AWS::AutoScaling::AutoScalingGroup",
-      "Properties" : {
-        "VPCZoneIdentifier" : { "Ref" : "Subnets" },
-        "LaunchConfigurationName" : { "Ref" : "LaunchConfig" },
-        "MinSize" : "1",
-        "MaxSize" : "3",
-        "TargetGroupARNs" : [ { "Ref" : "ALBTargetGroup" } ]
+        "CidrBlock" : "10.0.0.0/16",
+        "Tags" : [
+          {"Key" : "Application", "Value" : { "Ref" : "AWS::StackId"} },
+          {"Key" : "Network", "Value" : "Public" }
+        ]
       }
     },
 
-    "LaunchConfig" : {
+    "PublicSubnet1" : {
+      "Type" : "AWS::EC2::Subnet",
+      "Properties" : {
+        "VpcId" : { "Ref" : "VPC" },
+        "CidrBlock" : "10.0.0.0/24",
+        "AvailabilityZone" : { "Fn::Select" : ["0", { "Fn::GetAZs" : { "Ref" : "AWS::Region" } }]},
+        "Tags" : [
+          {"Key" : "Application", "Value" : { "Ref" : "AWS::StackId"} },
+          {"Key" : "Network", "Value" : "Public" }
+        ]
+      }
+    },
+
+    "PublicSubnet2" : {
+      "Type" : "AWS::EC2::Subnet",
+      "Properties" : {
+        "VpcId" : { "Ref" : "VPC" },
+        "CidrBlock" : "10.0.2.0/24",
+        "AvailabilityZone" : { "Fn::Select" : ["1", { "Fn::GetAZs" : { "Ref" : "AWS::Region" } }]},
+        "Tags" : [
+          {"Key" : "Application", "Value" : { "Ref" : "AWS::StackId"} },
+          {"Key" : "Network", "Value" : "Public" }
+        ]
+      }
+    },
+
+    "InternetGateway" : {
+      "Type" : "AWS::EC2::InternetGateway",
+      "Properties" : {
+        "Tags" : [
+          {"Key" : "Application", "Value" : { "Ref" : "AWS::StackId"} },
+          {"Key" : "Network", "Value" : "Public" }
+        ]
+      }
+    },
+
+    "GatewayToInternet" : {
+       "Type" : "AWS::EC2::VPCGatewayAttachment",
+       "Properties" : {
+         "VpcId" : { "Ref" : "VPC" },
+         "InternetGatewayId" : { "Ref" : "InternetGateway" }
+       }
+    },
+
+    "PublicRouteTable" : {
+      "Type" : "AWS::EC2::RouteTable",
+      "Properties" : {
+        "VpcId" : {"Ref" : "VPC"},
+        "Tags" : [
+          {"Key" : "Application", "Value" : { "Ref" : "AWS::StackId"} },
+          {"Key" : "Network", "Value" : "Public" }
+        ]
+      }
+    },
+
+    "PublicRoute" : {
+      "Type" : "AWS::EC2::Route",
+      "DependsOn" : "GatewayToInternet",
+      "Properties" : {
+        "RouteTableId" : { "Ref" : "PublicRouteTable" },
+        "DestinationCidrBlock" : "0.0.0.0/0",
+        "GatewayId" : { "Ref" : "InternetGateway" }
+      }
+    },
+
+    "PublicSubnetRouteTableAssociation1" : {
+      "Type" : "AWS::EC2::SubnetRouteTableAssociation",
+      "Properties" : {
+        "SubnetId" : { "Ref" : "PublicSubnet1" },
+        "RouteTableId" : { "Ref" : "PublicRouteTable" }
+      }
+    },
+
+    "PublicSubnetRouteTableAssociation2" : {
+      "Type" : "AWS::EC2::SubnetRouteTableAssociation",
+      "Properties" : {
+        "SubnetId" : { "Ref" : "PublicSubnet2" },
+        "RouteTableId" : { "Ref" : "PublicRouteTable" }
+      }
+    },
+
+
+    "PrivateSubnet1" : {
+      "Type" : "AWS::EC2::Subnet",
+      "Properties" : {
+        "VpcId" : { "Ref" : "VPC" },
+        "CidrBlock" : "10.0.1.0/24",
+        "AvailabilityZone" : { "Fn::Select" : ["0", { "Fn::GetAZs" : { "Ref" : "AWS::Region" } }]},
+        "Tags" : [
+          {"Key" : "Application", "Value" : { "Ref" : "AWS::StackId"} },
+          {"Key" : "Network", "Value" : "Private" }
+        ]
+      }
+    },
+
+    "PrivateSubnet2" : {
+      "Type" : "AWS::EC2::Subnet",
+      "Properties" : {
+        "VpcId" : { "Ref" : "VPC" },
+        "CidrBlock" : "10.0.3.0/24",
+        "AvailabilityZone" : { "Fn::Select" : ["1", { "Fn::GetAZs" : { "Ref" : "AWS::Region" } }]},
+        "Tags" : [
+          {"Key" : "Application", "Value" : { "Ref" : "AWS::StackId"} },
+          {"Key" : "Network", "Value" : "Private" }
+        ]
+      }
+    },
+
+    "PrivateRouteTable1" : {
+      "Type" : "AWS::EC2::RouteTable",
+      "Properties" : {
+        "VpcId" : {"Ref" : "VPC"},
+        "Tags" : [
+          {"Key" : "Application", "Value" : { "Ref" : "AWS::StackId"} },
+          {"Key" : "Network", "Value" : "Private" }
+        ]
+      }
+    },
+
+    "PrivateRouteTable2" : {
+      "Type" : "AWS::EC2::RouteTable",
+      "Properties" : {
+        "VpcId" : {"Ref" : "VPC"},
+        "Tags" : [
+          {"Key" : "Application", "Value" : { "Ref" : "AWS::StackId"} },
+          {"Key" : "Network", "Value" : "Private" }
+        ]
+      }
+    },
+
+    "PrivateSubnetRouteTableAssociation1" : {
+      "Type" : "AWS::EC2::SubnetRouteTableAssociation",
+      "Properties" : {
+        "SubnetId" : { "Ref" : "PrivateSubnet1" },
+        "RouteTableId" : { "Ref" : "PrivateRouteTable1" }
+      }
+    },
+
+    "PrivateSubnetRouteTableAssociation2" : {
+      "Type" : "AWS::EC2::SubnetRouteTableAssociation",
+      "Properties" : {
+        "SubnetId" : { "Ref" : "PrivateSubnet2" },
+        "RouteTableId" : { "Ref" : "PrivateRouteTable2" }
+      }
+    },
+
+    "PrivateRoute1" : {
+      "Type" : "AWS::EC2::Route",
+      "Properties" : {
+        "RouteTableId" : { "Ref" : "PrivateRouteTable1" },
+        "DestinationCidrBlock" : "0.0.0.0/0",
+        "InstanceId" : { "Ref" : "NATDevice1" }
+      }
+    },
+
+    "PrivateRoute2" : {
+      "Type" : "AWS::EC2::Route",
+      "Properties" : {
+        "RouteTableId" : { "Ref" : "PrivateRouteTable2" },
+        "DestinationCidrBlock" : "0.0.0.0/0",
+        "InstanceId" : { "Ref" : "NATDevice2" }
+      }
+    },
+
+
+    "NATIPAddress1" : {
+      "Type" : "AWS::EC2::EIP",
+      "DependsOn" : "GatewayToInternet",
+      "Properties" : {
+        "Domain" : "vpc",
+        "InstanceId" : { "Ref" : "NATDevice1" }
+      }
+    },
+
+    "NATIPAddress2" : {
+      "Type" : "AWS::EC2::EIP",
+      "DependsOn" : "GatewayToInternet",
+      "Properties" : {
+        "Domain" : "vpc",
+        "InstanceId" : { "Ref" : "NATDevice2" }
+      }
+    },
+
+    "NATDevice1" : {
+      "Type" : "AWS::EC2::Instance",
+      "Properties" : {
+        "InstanceType" : "t2.micro",
+        "KeyName" : { "Ref" : "KeyName" },
+        "SubnetId" : { "Ref" : "PublicSubnet1" },
+        "SourceDestCheck" : "false",
+        "ImageId" : { "Fn::FindInMap" : [ "AWSNATAMI", { "Ref" : "AWS::Region" }, "AMI" ]},
+        "SecurityGroupIds" : [{ "Ref" : "NATSecurityGroup" }],
+        "Tags" : [ {"Key" : "Name", "Value" : "NAT Device"} ]
+      }
+    },
+
+    "NATDevice2" : {
+      "Type" : "AWS::EC2::Instance",
+      "Properties" : {
+        "InstanceType" : "t2.micro",
+        "KeyName" : { "Ref" : "KeyName" },
+        "SubnetId" : { "Ref" : "PublicSubnet2" },
+        "SourceDestCheck" : "false",
+        "ImageId" : { "Fn::FindInMap" : [ "AWSNATAMI", { "Ref" : "AWS::Region" }, "AMI" ]},
+        "SecurityGroupIds" : [{ "Ref" : "NATSecurityGroup" }],
+        "Tags" : [ {"Key" : "Name", "Value" : "NAT Device"} ]
+      }
+    },
+
+    "NATSecurityGroup" : {
+      "Type" : "AWS::EC2::SecurityGroup",
+      "Properties" : {
+        "GroupDescription" : "Enable internal access to the NAT device",
+        "VpcId" : { "Ref" : "VPC" },
+        "SecurityGroupIngress" : [
+           { "IpProtocol" : "tcp", "FromPort" : "80",  "ToPort" : "80",  "CidrIp" : "0.0.0.0/0"} ,
+           { "IpProtocol" : "tcp", "FromPort" : "443", "ToPort" : "443", "CidrIp" : "0.0.0.0/0"} ,
+           { "IpProtocol" : "tcp", "FromPort" : "22",  "ToPort" : "22",  "SourceSecurityGroupId" : { "Ref" : "BastionSecurityGroup" } },
+           { "IpProtocol" : "tcp", "FromPort" : "1",  "ToPort" : "65535",  "SourceSecurityGroupId" : { "Ref" : "InternalSshSecurityGroup" } }],
+        "SecurityGroupEgress" : [
+           { "IpProtocol" : "tcp", "FromPort" : "1",  "ToPort" : "65535",  "CidrIp" : "0.0.0.0/0"} ]
+      }
+    },
+
+    "BastionHost1" : {
+      "Type" : "AWS::EC2::Instance",
+      "DependsOn" : "GatewayToInternet",
+      "Properties" : {
+        "InstanceType" : { "Ref" : "BastionInstanceType" },
+        "KeyName"  : { "Ref" : "KeyName" },
+        "ImageId"  : { "Fn::FindInMap" : [ "AWSRegionArch2AMI", { "Ref" : "AWS::Region" }, { "Fn::FindInMap" : [ "AWSInstanceType2Arch", { "Ref" : "BastionInstanceType" }, "Arch" ] } ] },
+        "NetworkInterfaces" : [{
+          "GroupSet"                 : [{ "Ref" : "BastionSecurityGroup" }],
+          "AssociatePublicIpAddress" : "true",
+          "DeviceIndex"              : "0",
+          "DeleteOnTermination"      : "true",
+          "SubnetId"                 : { "Ref" : "PublicSubnet1" }
+        }],
+        "Tags" : [ {"Key" : "Name", "Value" : "Bastion Host"}, {"Key" : "Bastion", "Value" : "true"} ]
+      }
+    },
+
+    "BastionHost2" : {
+      "Type" : "AWS::EC2::Instance",
+      "DependsOn" : "GatewayToInternet",
+      "Properties" : {
+        "InstanceType" : { "Ref" : "BastionInstanceType" },
+        "KeyName"  : { "Ref" : "KeyName" },
+        "ImageId"  : { "Fn::FindInMap" : [ "AWSRegionArch2AMI", { "Ref" : "AWS::Region" }, { "Fn::FindInMap" : [ "AWSInstanceType2Arch", { "Ref" : "BastionInstanceType" }, "Arch" ] } ] },
+        "NetworkInterfaces" : [{
+          "GroupSet"                 : [{ "Ref" : "BastionSecurityGroup" }],
+          "AssociatePublicIpAddress" : "true",
+          "DeviceIndex"              : "0",
+          "DeleteOnTermination"      : "true",
+          "SubnetId"                 : { "Ref" : "PublicSubnet2" }
+        }],
+        "Tags" : [ {"Key" : "Name", "Value" : "Bastion Host"}, {"Key" : "Bastion", "Value" : "true"} ]
+      }
+    },
+
+    "BastionSecurityGroup" : {
+      "Type" : "AWS::EC2::SecurityGroup",
+      "Properties" : {
+        "GroupDescription" : "Enable access to the bastion host",
+        "VpcId" : { "Ref" : "VPC" },
+        "SecurityGroupIngress" : [ { "IpProtocol" : "tcp", "FromPort" : "22",  "ToPort" : "22",  "CidrIp" : "0.0.0.0/0"} ]
+      }
+    },
+
+    "InternalSshSecurityGroup" : {
+      "Type" : "AWS::EC2::SecurityGroup",
+      "Properties" : {
+        "GroupDescription" : "Allow ssh access from bastion",
+        "VpcId" : { "Ref" : "VPC" },
+        "SecurityGroupIngress" : [
+          { "IpProtocol" : "tcp", "FromPort" : "22", "ToPort" : "22", "SourceSecurityGroupId" : { "Ref" : "BastionSecurityGroup" } } ],
+        "SecurityGroupEgress" : [ ]
+      }
+    },
+
+    "WebTierASG" : {
+      "Type" : "AWS::AutoScaling::AutoScalingGroup",
+      "Properties" : {
+        "VPCZoneIdentifier" : [{ "Ref" : "PrivateSubnet1" },{ "Ref" : "PrivateSubnet2" }],
+        "LaunchConfigurationName" : { "Ref" : "WebTierLaunchConfig" },
+        "MinSize" : "1",
+        "MaxSize" : "3",
+        "TargetGroupARNs" : [ { "Ref" : "PublicALBTargetGroup" } ]
+      }
+    },
+
+    "WebTierLaunchConfig" : {
       "Type" : "AWS::AutoScaling::LaunchConfiguration",
       "Metadata" : {
-        "Comment" : "Install a simple application",
+        "Comment" : "http proxypass to backend tomcat8",
         "AWS::CloudFormation::Init" : {
           "config" : {
             "packages" : {
               "yum" : {
                 "httpd" : [],
-                "telnet": [],
-                "java-1.8.0-openjdk": [],
-                "tomcat8":[],
-                "tomcat8-webapps":[]
+                "telnet": []
               }
             },
 
             "files" : {
-              "/var/www/html/index.html" : {
-                "content" : { "Fn::Join" : ["\n", [
-                  "<h1>Congratulations, you have successfully launched the AWS CloudFormation sample.</h1>"
+              "/etc/httpd/conf.d/maptobackend.conf" : {
+                "content" : { "Fn::Join" : ["", [
+                   "ProxyPass / ajp://", { "Fn::GetAtt" : [ "PrivateALB", "DNSName" ]}, "\n",
+                   "ProxyPassReverse / ajp://", { "Fn::GetAtt" : [ "PrivateALB", "DNSName" ]},"\n"
                 ]]},
                 "mode"    : "000644",
                 "owner"   : "root",
@@ -276,7 +396,7 @@
                   "path=Resources.LaunchConfig.Metadata.AWS::CloudFormation::Init\n",
                   "action=/opt/aws/bin/cfn-init -v ",
                   "         --stack ", { "Ref" : "AWS::StackName" },
-                  "         --resource LaunchConfig ",
+                  "         --resource WebTierLaunchConfig ",
                   "         --region ", { "Ref" : "AWS::Region" }, "\n",
                   "runas=root\n"
                 ]]},
@@ -289,6 +409,115 @@
             "services" : {
               "sysvinit" : {
                 "httpd"    : { "enabled" : "true", "ensureRunning" : "true" },
+                "cfn-hup" : { "enabled" : "true", "ensureRunning" : "true",
+                              "files" : ["/etc/cfn/cfn-hup.conf", "/etc/cfn/hooks.d/cfn-auto-reloader.conf"]}
+              }
+            }
+          }
+        }
+      },
+      "Properties" : {
+        "KeyName" : { "Ref" : "KeyName" },
+        "ImageId" : { "Fn::FindInMap" : [ "AWSRegionArch2AMI", { "Ref" : "AWS::Region" },
+                                          { "Fn::FindInMap" : [ "AWSInstanceType2Arch", { "Ref" : "InstanceType" }, "Arch" ] } ] },
+        "SecurityGroups" : [ { "Ref" : "InstanceSecurityGroup" } ],
+        "InstanceType" : { "Ref" : "InstanceType" },
+        "UserData"       : { "Fn::Base64" : { "Fn::Join" : ["", [
+             "#!/bin/bash -xe\n",
+             "yum update -y aws-cfn-bootstrap\n",
+
+             "yum update -y aws-cli\n",
+
+             "/opt/aws/bin/cfn-init -v ",
+             "         --stack ", { "Ref" : "AWS::StackName" },
+             "         --resource WebTierLaunchConfig ",
+             "         --region ", { "Ref" : "AWS::Region" }, "\n",
+
+
+             "/opt/aws/bin/cfn-signal -e $? ",
+             "         --stack ", { "Ref" : "AWS::StackName" },
+             "         --resource WebTierASG ",
+             "         --region ", { "Ref" : "AWS::Region" }, "\n"
+        ]]}}
+      }
+    },
+
+    "WebServerScaleUpPolicy" : {
+      "Type" : "AWS::AutoScaling::ScalingPolicy",
+      "Properties" : {
+        "AdjustmentType" : "ChangeInCapacity",
+        "AutoScalingGroupName" : { "Ref" : "WebTierASG" },
+        "Cooldown" : "60",
+        "ScalingAdjustment" : "1"
+      }
+    },
+    "WebServerScaleDownPolicy" : {
+      "Type" : "AWS::AutoScaling::ScalingPolicy",
+      "Properties" : {
+        "AdjustmentType" : "ChangeInCapacity",
+        "AutoScalingGroupName" : { "Ref" : "WebTierASG" },
+        "Cooldown" : "60",
+        "ScalingAdjustment" : "-1"
+      }
+    },
+
+
+    "AppTierASG" : {
+      "Type" : "AWS::AutoScaling::AutoScalingGroup",
+      "Properties" : {
+        "VPCZoneIdentifier" : [{ "Ref" : "PrivateSubnet1" },{ "Ref" : "PrivateSubnet2" }],
+        "LaunchConfigurationName" : { "Ref" : "AppTierLaunchConfig" },
+        "MinSize" : "1",
+        "MaxSize" : "3",
+        "TargetGroupARNs" : [ { "Ref" : "PublicALBTargetGroup" } ]
+      }
+    },
+
+    "AppTierLaunchConfig" : {
+      "Type" : "AWS::AutoScaling::LaunchConfiguration",
+      "Metadata" : {
+        "Comment" : "Install Tomcat8 App",
+        "AWS::CloudFormation::Init" : {
+          "config" : {
+            "packages" : {
+              "yum" : {
+                "java-1.8.0-openjdk": [],
+                "tomcat8":[],
+                "tomcat8-webapps":[]
+              }
+            },
+
+            "files" : {
+                "/etc/cfn/cfn-hup.conf" : {
+                "content" : { "Fn::Join" : ["", [
+                  "[main]\n",
+                  "stack=", { "Ref" : "AWS::StackId" }, "\n",
+                  "region=", { "Ref" : "AWS::Region" }, "\n"
+                ]]},
+                "mode"    : "000400",
+                "owner"   : "root",
+                "group"   : "root"
+              },
+
+              "/etc/cfn/hooks.d/cfn-auto-reloader.conf" : {
+                "content": { "Fn::Join" : ["", [
+                  "[cfn-auto-reloader-hook]\n",
+                  "triggers=post.update\n",
+                  "path=Resources.LaunchConfig.Metadata.AWS::CloudFormation::Init\n",
+                  "action=/opt/aws/bin/cfn-init -v ",
+                  "         --stack ", { "Ref" : "AWS::StackName" },
+                  "         --resource AppTierLaunchConfig ",
+                  "         --region ", { "Ref" : "AWS::Region" }, "\n",
+                  "runas=root\n"
+                ]]},
+                "mode"    : "000400",
+                "owner"   : "root",
+                "group"   : "root"
+              }
+            },
+
+            "services" : {
+              "sysvinit" : {
                 "tomcat8"    : { "enabled" : "true", "ensureRunning" : "true" },
                 "cfn-hup" : { "enabled" : "true", "ensureRunning" : "true",
                               "files" : ["/etc/cfn/cfn-hup.conf", "/etc/cfn/hooks.d/cfn-auto-reloader.conf"]}
@@ -311,72 +540,98 @@
 
              "/opt/aws/bin/cfn-init -v ",
              "         --stack ", { "Ref" : "AWS::StackName" },
-             "         --resource LaunchConfig ",
+             "         --resource AppTierLaunchConfig ",
              "         --region ", { "Ref" : "AWS::Region" }, "\n",
-
-             "# Proxy all requests to Tomcat\n",
-             "echo \"ProxyPass  / ajp://localhost:8009/\" >> /etc/httpd/conf/httpd.conf\n",
-
-             "# Start servers\n",
-             "service tomcat8 restart\n",
-             "/etc/init.d/httpd restart\n",
 
              "/opt/aws/bin/cfn-signal -e $? ",
              "         --stack ", { "Ref" : "AWS::StackName" },
-             "         --resource WebServerGroup ",
+             "         --resource AppTierASG ",
              "         --region ", { "Ref" : "AWS::Region" }, "\n"
         ]]}}
       }
     },
 
-    "WebServerScaleUpPolicy" : {
+    "AppServerScaleUpPolicy" : {
       "Type" : "AWS::AutoScaling::ScalingPolicy",
       "Properties" : {
         "AdjustmentType" : "ChangeInCapacity",
-        "AutoScalingGroupName" : { "Ref" : "WebServerGroup" },
+        "AutoScalingGroupName" : { "Ref" : "AppTierASG" },
         "Cooldown" : "60",
         "ScalingAdjustment" : "1"
       }
     },
-    "WebServerScaleDownPolicy" : {
+    "AppServerScaleDownPolicy" : {
       "Type" : "AWS::AutoScaling::ScalingPolicy",
       "Properties" : {
         "AdjustmentType" : "ChangeInCapacity",
-        "AutoScalingGroupName" : { "Ref" : "WebServerGroup" },
+        "AutoScalingGroupName" : { "Ref" : "AppTierASG" },
         "Cooldown" : "60",
         "ScalingAdjustment" : "-1"
       }
     },
 
-
-    "ApplicationLoadBalancer" : {
+    "PublicALB" : {
       "Type" : "AWS::ElasticLoadBalancingV2::LoadBalancer",
       "Properties" : {
-        "Subnets" : { "Ref" : "Subnets"},
-        "SecurityGroups" : [ {"Ref":"myELBSG"} ]
+        "Subnets" : [{ "Ref" : "PrivateSubnet1"},{"Ref" : "PrivateSubnet2"}],
+        "SecurityGroups" : [ {"Ref":"PublicALBSG"} ]
       }
     },
 
-    "ALBListener" : {
+    "PublicALBListener" : {
       "Type" : "AWS::ElasticLoadBalancingV2::Listener",
       "Properties" : {
         "DefaultActions" : [{
           "Type" : "forward",
-          "TargetGroupArn" : { "Ref" : "ALBTargetGroup" }
+          "TargetGroupArn" : { "Ref" : "PublicALBTargetGroup" }
         }],
-        "LoadBalancerArn" : { "Ref" : "ApplicationLoadBalancer" },
+        "LoadBalancerArn" : { "Ref" : "PrivateALB" },
         "Port" : "80",
         "Protocol" : "HTTP"
       }
     },
 
-    "ALBTargetGroup" : {
+    "PublicALBTargetGroup" : {
       "Type" : "AWS::ElasticLoadBalancingV2::TargetGroup",
       "Properties" : {
         "HealthCheckIntervalSeconds" : 30,
         "HealthCheckTimeoutSeconds" : 5,
         "HealthyThresholdCount" : 3,
         "Port" : 80,
+        "Protocol" : "HTTP",
+        "UnhealthyThresholdCount" : 5,
+        "VpcId" : {"Ref" : "VpcId"}
+      }
+    },
+
+    "PrivateALB" : {
+      "Type" : "AWS::ElasticLoadBalancingV2::LoadBalancer",
+      "Properties" : {
+        "Subnets" : [{ "Ref" : "PrivateSubnet1"},{"Ref" : "PrivateSubnet2"}],
+        "SecurityGroups" : [ {"Ref":"PrivateALBSG"} ]
+      }
+    },
+
+    "PrivateALBListener" : {
+      "Type" : "AWS::ElasticLoadBalancingV2::Listener",
+      "Properties" : {
+        "DefaultActions" : [{
+          "Type" : "forward",
+          "TargetGroupArn" : { "Ref" : "PrivateALBTargetGroup" }
+        }],
+        "LoadBalancerArn" : { "Ref" : "PrivateALB" },
+        "Port" : "8080",
+        "Protocol" : "HTTP"
+      }
+    },
+
+    "PrivateALBTargetGroup" : {
+      "Type" : "AWS::ElasticLoadBalancingV2::TargetGroup",
+      "Properties" : {
+        "HealthCheckIntervalSeconds" : 30,
+        "HealthCheckTimeoutSeconds" : 5,
+        "HealthyThresholdCount" : 3,
+        "Port" : 8080,
         "Protocol" : "HTTP",
         "UnhealthyThresholdCount" : 5,
         "VpcId" : {"Ref" : "VpcId"}
@@ -397,14 +652,14 @@
           "IpProtocol" : "tcp",
           "FromPort" : "80",
           "ToPort" : "80",
-          "SourceSecurityGroupId" : {"Fn::Select" : [0, {"Fn::GetAtt" : ["ApplicationLoadBalancer", "SecurityGroups"]}]}
+          "SourceSecurityGroupId" : {"Fn::Select" : [0, {"Fn::GetAtt" : ["PublicALB", "SecurityGroups"]}]}
         } ],
         "VpcId" : { "Ref" : "VpcId" }
       }
     },
 
 
-  "myELBSG" : {
+    "PublicALBSG" : {
     "Type" : "AWS::EC2::SecurityGroup",
     "Properties" : {
       "GroupDescription" : "Enable HTTP/HTTPS from internet to the load balancer",
@@ -422,14 +677,40 @@
       } ],
       "VpcId" : { "Ref" : "VpcId" }
     }
+  },
+
+    "PrivateALBSG" : {
+      "Type" : "AWS::EC2::SecurityGroup",
+      "Properties" : {
+      "GroupDescription" : "Enable HTTP/HTTPS from internet to the load balancer",
+      "SecurityGroupIngress" : [ {
+      "IpProtocol" : "tcp",
+      "FromPort" : "80",
+      "ToPort" : "80",
+      "CidrIp" : { "Ref" : "SSHLocation"}
+    },
+    {
+      "IpProtocol" : "tcp",
+      "FromPort" : "443",
+      "ToPort" : "443",
+      "CidrIp" : { "Ref" : "SSHLocation"}
+    } ],
+    "VpcId" : { "Ref" : "VpcId" }
   }
 },
 
+
   "Outputs" : {
-    "URL" : {
-      "Description" : "The URL of the website",
+    "Public ALB URL" : {
+      "Description" : "The Public URL of the website",
       "Value" :  { "Fn::Join" : [ "", [ "http://", { "Fn::GetAtt" : [
-          "ApplicationLoadBalancer", "DNSName" ]}]]}
+          "PublicALB", "DNSName" ]}]]}
+    },
+    "Private ALB URL" : {
+      "Description" : "The Private URL of the ALB",
+      "Value" :  { "Fn::Join" : [ "", [ "http://", { "Fn::GetAtt" : [
+          "PrivateALB", "DNSName" ]}]]}
     }
   }
+}
 }

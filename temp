@@ -1,0 +1,2 @@
+"# Proxy all requests to Tomcat\n",
+         "echo \"ProxyPass  / ajp://localhost:8009/\" >> /etc/httpd/conf/httpd.conf\n",
