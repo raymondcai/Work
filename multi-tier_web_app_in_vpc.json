@@ -1,7 +1,7 @@
 {
   "AWSTemplateFormatVersion" : "2010-09-09",
 
-  "Description" : "https://raw.githubusercontent.com/satterly/AWSCloudFormation-samples/master/multi-tier-web-app-in-vpc.template AWS CloudFormation Sample Template multi-tier-web-app-in-vpc.template: Sample template showing how to create a multi-tier web application in a VPC with multiple subnets. The first subnet is public and contains and internet facing load balancer, a NAT device for internet access from the private subnet and a bastion host to allow SSH access to the hosts in the private subnet. The second subnet is private and contains a Frontend fleet of EC2 instances, an internal load balancer and a Backend fleet of EC2 instances. **WARNING** This template creates Elastic Load Balancers and Amazon EC2 instances. You will be billed for the AWS resources used if you create a stack from this template.",
+  "Description" : "AWS CloudFormation Template multi-tier-web-app-in-vpc.template: Template showing how to create a multi-tier web application (Apache Httpd frontend and tomcat as backend in a newly created VPC with Public and Private subnets. The first subnet is public and contains internet facing load balancer, a NAT device providing internet access for servers in private subnet and a bastion host to allow SSH access to the hosts in the private subnet. The second subnet is private and contains a Frontend fleet of EC2 instances running apache httpd , an internal load balancer and a Backend fleet of EC2 instances running tomcat8. ",
 
   "Parameters" : {
 
